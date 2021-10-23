@@ -5,19 +5,8 @@ const options = {};
 export default {
   extends: Line,
   mounted() {},
-  computed: {
-    getChartLables() {
-      return this.chartData.map((data) =>
-        new Date(data.x * 1000).toDateString()
-      );
-    },
-    getChartValues() {
-      return this.chartData.map((data) => data.y.toLocaleString());
-    },
-  },
-  props: ["chartData"],
-  watch: {
-    chartData: function () {
+  methods: {
+    chartRender() {
       if (!this.chartData) return;
       this.renderChart(
         {
@@ -25,22 +14,40 @@ export default {
           datasets: [
             {
               label: "$",
-              data: this.chartData,
+              data: this.getChartValues,
               backgroundColor: "transparent",
               borderColor: "rgba(1, 116, 188, 0.50)",
               pointBackgroundColor: "rgba(171, 71, 188, 1)",
             },
           ],
         },
+
         {
+          legend: { display: false },
           responsive: true,
           maintainAspectRatio: false,
           title: {
             display: true,
-            text: "My Data",
+            text: "Last 30 Days",
           },
         }
       );
+    },
+  },
+  computed: {
+    getChartLables() {
+      return this.chartData.map((data) =>
+        new Date(data.x * 1000).toLocaleDateString('en-GB')
+      );
+    },
+    getChartValues() {
+      return this.chartData.map((data) => data.y);
+    },
+  },
+  props: ["chartData"],
+  watch: {
+    chartData: function () {
+      this.chartRender();
     },
   },
 };

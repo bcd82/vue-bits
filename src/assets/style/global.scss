@@ -13,7 +13,14 @@
 
 // Cmps
 @import 'cmps/header';
+@import 'cmps/contact-list';
+@import 'cmps/contact-preview';
+@import 'cmps/move-preview';
 
 //Views
-@import 'views/main-view'
+@import 'views/main-view';
+@import 'views/home';
+@import 'views/charts';
+@import 'views/contact-details';
+@import 'views/edit-page';
 

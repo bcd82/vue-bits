@@ -1,8 +1,9 @@
 <template>
-  <section class="charts-page">
+  <section class="charts">
     Market Price over time:
-
-    <div><PriceChart :chartData="chart1Data"/></div>
+    <div>
+      <PriceChart :chartData="chart1Data" />
+    </div>
   </section>
 </template>
 
@@ -17,15 +18,14 @@ export default {
   data() {
     return {
       chart1Data: null,
-      loaded:false
+      loaded: false,
     };
   },
 
   methods: {
     async getChartData() {
       this.chart1Data = await getMarketPrice();
-        console.log(this.chart1Data);
-        this.loaded = true;
+      this.loaded = true;
     },
   },
 

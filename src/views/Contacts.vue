@@ -1,16 +1,14 @@
 <template>
   <section class="contacts-page">
-    Your contacts
-    <div class="contact-list">
-      <pre>
-            <p v-for="contact in contacts" :key="contact._id">{{contact}} </p>
-        </pre>
-    </div>
+    <ContactFilter :filterBy="filterBy"  @filterChange="setFilter"/>
+    <ContactList :contacts="contacts"/>
   </section>
 </template>
 
 <script>
 import { contactService } from "../services/contact.service";
+import ContactList from "../cmps/ContactList.vue"
+import ContactFilter from "../cmps/ContactFilter.vue"
 
 export default {
   data() {
@@ -24,11 +22,15 @@ export default {
     async loadContacts() {
       this.contacts = await contactService.query(this.filterBy);
     },
+    async setFilter(val){
+      this.filterBy = val;
+      this.loadContacts();
+    }
   },
 
   created() {
     this.loadContacts();
   },
-  
+  components : {ContactList,ContactFilter}
 };
 </script>

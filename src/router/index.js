@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Contacts from '../views/Contacts.vue'
+import ContactDetails from '../views/ContactDetails.vue'
+import ContactEdit from '../views/ContactEdit.vue'
 import Charts from '../views/Charts.vue'
 Vue.use(VueRouter)
 
@@ -10,6 +12,21 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/contacts/edit/:contactId',
+    name: 'Contact Edit',
+    component: ContactEdit
+  },
+  {
+    path: '/contacts/edit/',
+    name: 'Contact Add',
+    component: ContactEdit
+  },
+  {
+    path: '/contacts/:contactId',
+    name: 'Contact Details',
+    component: ContactDetails
   },
   {
     path: '/contacts',
