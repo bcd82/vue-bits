@@ -2,7 +2,8 @@
   "name": "mister-bitcoin",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bcd82.github.io/vue-bits",
+  "homepage": "https://github.com/bcd82/vue-bits",
+
   "scripts": {
     "start": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
