@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/my-project/precache-manifest.2f71c6db06c3d88a3dab2aa8067af40a.js"
+  "/vue-bits/precache-manifest.94ea64d071e22dfb640806d6126175fc.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "mister-bitcoin"});
