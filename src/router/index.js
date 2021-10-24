@@ -14,13 +14,8 @@ const routes = [
     component: Home
   },
   {
-    path: '/contacts/edit/:contactId',
+    path: '/contacts/edit/:contactId?',
     name: 'Contact Edit',
-    component: ContactEdit
-  },
-  {
-    path: '/contacts/edit/',
-    name: 'Contact Add',
     component: ContactEdit
   },
   {

@@ -26,4 +26,11 @@
     width:100%;
     gap:10px;
   }
+  .login { 
+    gap:10px;
+    input {
+      font-size:rem(18px);
+      padding:5px 10px;
+    }
+  }
 }
