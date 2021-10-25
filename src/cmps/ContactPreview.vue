@@ -20,7 +20,6 @@ export default {
   computed: {
     balanceToUsd() { 
       const rate = this.$store.getters.rate 
-      console.log(rate)
       return (this.contact.balance / rate).toLocaleString('en-US')
     }
   }

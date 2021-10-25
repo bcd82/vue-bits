@@ -88,18 +88,11 @@ export default {
     },
       balanceToUsd() { 
       const rate = this.$store.getters.rate 
-      console.log(rate)
       return (this.contact.balance / rate).toLocaleString('en-US')
     }
   },
   components: {
     MoveList,
-  },
-  watch: {
-    user(newVal, oldVal) {
-      console.log(newVal,oldVal)
-      if (newVal.moves.length !== oldVal.moves.length) this.loadContact();
-    },
   },
 };
 </script>
