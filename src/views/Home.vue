@@ -1,7 +1,7 @@
 <template>
   <section class="home">
     <div v-if="user" class="user-info flex align-center">
-      <img  :src="`https://robohash.org/${user.username}.png`" />
+      <img :src="`https://robohash.org/${user.username}.png`" />
       <div class="flex column">
         <p>Hi {{ user.username }}</p>
         <p>Balance:</p>
@@ -28,50 +28,40 @@
 </template>
 
 <script>
-import { userService } from "../services/user.service";
-import { getRate } from "../services/bitcoin.service";
 import MoveList from "../cmps/MoveList.vue";
 export default {
   data() {
     return {
-      user: null,
-      rate: null,
       creds: {
         username: "",
         password: "",
       },
     };
   },
+  name: "Home",
   methods: {
-    async loadUser() {
-      try {
-        this.user = await userService.getUser();
-      } catch (err) {
-        console.log("error", err);
-      }
+    loadUser() {
+      this.$store.dispatch({ type: "loadUser" });
     },
-    async getRate() {
-      try {
-        this.rate = await getRate();
-      } catch (err) {}
+    getRate() {
+      this.$store.dispatch({ type: "getMarketPrice" });
     },
-    async logout() {
-      userService.logout();
-      this.user = null;
+    logout() {
+      this.$store.dispatch({ type: "logout" });
     },
-    async login() {
-      try{ 
-        const user = await userService.login(this.creds);
-        this.user = user;
-      }
-      catch(err){
-        console.log('user doesnt exist',err)
-      }
+    login() {
+      this.$store.dispatch({ type: "login", creds: this.creds });
     },
   },
   computed: {
     getBtcToUsd() {
       return (this.user.balance / this.rate).toLocaleString("en-US");
+    },
+    user() {
+      return this.$store.getters.loggedInUser;
+    },
+    rate() {
+      return this.$store.getters.rate;
     },
   },
   created() {

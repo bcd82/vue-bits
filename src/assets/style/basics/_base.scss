@@ -61,6 +61,12 @@ button {
     padding:0 10px;
     border-radius: 3px;
     text-transform: capitalize;
+    cursor:pointer;
+    transform:scale(1);
+    transition: transform .2s;
+    &:hover {
+        transform:scale(1.07);
+    }
 }
 
 .fade-in{animation:fade-in .3s cubic-bezier(.39,.575,.565,1.000) both}
